@@ -1,2 +1,0 @@
-# Basic AWS SDK requirements (boto3 is provided by Lambda runtime)
-# No external dependencies for initial deployment
