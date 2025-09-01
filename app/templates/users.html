@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block page_title %}User Management{% endblock %}
+{% block body %}
+    {{ super() }}
+
+    <div class = "container">
+        <div class="col-lg-6">
+                <table class="table small">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Status</th>
+                      <th>Username</th>
+                      <th>Age</th>
+                      <th>Created At</th>
+                      <th>Action</th>
+                    </tr>
+                </thead>
+                {% for id, title, firstname, lastname, status, username, age, created_at, act in users %}
+                        <tr>
+                           <td> {{ id }} </td>
+                           <td> {{ title }} </td>
+                           <td> {{ firstname }} </td>
+                           <td> {{ lastname }} </td>
+                           <td> {{ status }} </td>
+                           <td> {{ username }} </td>
+                           <td> {{ age }} </td>
+                           <td> {{ created_at }} </td>
+                           {% if session.get("current_user", None) == "admin" %}
+                           <td><a href={{act}}>Delete</a></td>
+                           {% else %}
+                            <td> NA </td>
+                           {% endif %}
+                        </tr>
+                        
+                {% endfor %}
+                </table>
+        </div>
+    </div>
+
+
+{% endblock %}
